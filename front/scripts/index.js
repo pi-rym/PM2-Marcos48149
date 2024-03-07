@@ -1,11 +1,12 @@
-console.log(tempData);
+//console.log(tempData);
 
  
 
 
 const contenedor = document.querySelector('.FlexContainer');
 
-const extraer = tempData.map((el) => {
+
+   function addUser(movie) {
     // Crear elementos HTML para la tarjeta
     const titulo = document.createElement('h3');
     const año = document.createElement('p');
@@ -15,21 +16,20 @@ const extraer = tempData.map((el) => {
     const genero = document.createElement('p'); // recibe un arreglo de string
     const imagen = document.createElement('img');
     const contenedorTarjeta = document.createElement('div');
+    const contenedorTarjeta2 = document.createElement('div');
     const contenedorHijo = document.createElement('div');
     const contenedorHijo2 = document.createElement('div');
 
     // Asignar valores a las propiedades correspondientes
-    titulo.textContent = el.title;
-    año.textContent = el.year;
-    director.textContent = el.director;
-    duracion.textContent = el.duration;
-    genero.textContent = el.genre.join(', '); // Unir los elementos del arreglo con coma y espacio
-    valoracion.textContent = el.rate;
-    imagen.src = el.poster;
-
+    titulo.textContent = movie.title;
+    año.textContent = movie.year;
+    director.textContent = movie.director;
+    duracion.textContent = movie.duration;
+    genero.textContent = movie.genre.join(', '); // Unir los elementos del arreglo con coma y espacio
+    valoracion.textContent = movie.rate;
+    imagen.src = movie.poster;
 
     
-
     // Agregar clases CSS correspondientes
     titulo.classList.add('tituloForm');
     año.classList.add('año');
@@ -38,10 +38,14 @@ const extraer = tempData.map((el) => {
     genero.classList.add('genero');
     valoracion.classList.add('valoracion');
     imagen.classList.add('imagen');
-    contenedorTarjeta.classList.add('contenedorForm');
+    contenedorTarjeta.classList.add('contenedorTarjeta');
 
     contenedorHijo.classList.add('contenedorHijo');
     contenedorHijo2.classList.add('contenedorHijo2');
+
+    contenedorTarjeta2.classList.add('contenedorTarjeta2');
+
+
    
     // Appendear elementos al contenedor de la tarjeta
     contenedorHijo.appendChild(imagen);
@@ -56,10 +60,30 @@ const extraer = tempData.map((el) => {
 
     // Agregar la tarjeta al contenedor principal
     
-    contenedorTarjeta.appendChild(contenedorHijo);
-    contenedorTarjeta.appendChild(contenedorHijo2);
+    contenedorTarjeta2.appendChild(contenedorHijo);
+    contenedorTarjeta2.appendChild(contenedorHijo2);
+
+    contenedorTarjeta.appendChild(contenedorTarjeta2);
     contenedor.appendChild(contenedorTarjeta);
 
     // Retornar el contenedor de la tarjeta
     return contenedorTarjeta;
-});
+}
+
+$.get('https://students-api.2.us-1.fl0.io/movies', function( crear){
+
+crear.map( (movie) => addUser(movie));
+})
+
+
+// ? cosas del panel de navegacion
+function togglePanel() {
+    var panel = document.getElementById("panel");
+
+    if (panel.style.display === "block") {
+        panel.style.display = "none";
+    } else {
+        panel.style.display = "block";
+    }
+    
+}
