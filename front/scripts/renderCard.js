@@ -1,5 +1,7 @@
 
 
+const contenedor = document.querySelector('.FlexContainer');
+
 function addUser(movie) {
     // Crear elementos HTML para la tarjeta
     const titulo = document.createElement('h3');

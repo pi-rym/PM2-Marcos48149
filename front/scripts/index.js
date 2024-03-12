@@ -1,13 +1,30 @@
 //console.log(tempData);
-
+const axios= require('axios');
 const addUser= require('./renderCard')
 
-const contenedor = document.querySelector('.FlexContainer');
 
 
-$.get('https://students-api.2.us-1.fl0.io/movies', function( crear){
 
-crear.map( (movie) => addUser(movie));
-})
+
+
+
+const get= ()=>{axios.get(" https://students-api.up.railway.app/movies")
+.then(({data})=> data.forEach(addUser))
+.catch((error)=> console.log(error.message))
+} 
+get();
+
+
+
+
+
+
+
+
+
+//$.get('https://students-api.up.railway.app/movies', function( crear){
+
+//crear.map( (movie) => addUser(movie));
+//})
     
     
