@@ -11,9 +11,19 @@
 
 //module.exports= getAllMovie;
 
+const movieService = require('../services/movie.services');
 
 module.exports = {
-    getAllMovie: (req, res) => {
-         res.status(200).send("endpoint para obtener películas");
-     }
+    getAllMovie: async (req, res) => {
+        try {
+            const movies= await movieService();
+            res.status(200).json(movies);
+
+        } catch (error) {
+            res.status(500).json({
+                error: "error interno del servidor"});
+        }
+   
+     },
+      
  };

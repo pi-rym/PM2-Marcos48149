@@ -10,5 +10,6 @@ const Movierouter = require("./movie.router");
 const app = express();
 app.use("/movies", Movierouter);
 
+
 module.exports = app;
 
