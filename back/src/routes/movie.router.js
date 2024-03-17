@@ -10,8 +10,8 @@ const validateMovies= require("../middlewares/validacion");
 const router = Router();
 
 router.get("/", movieController.getAllMovie);
-router.get("/",  POSTController.getPeliculasController);
-router.post("/",validateMovies, POSTController.postPeliculasController)
+
+router.post("/",validateMovies, POSTController.postPeliculasController);
 
 module.exports = router;
 

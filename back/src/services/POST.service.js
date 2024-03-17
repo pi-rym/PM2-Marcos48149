@@ -1,9 +1,9 @@
-//const agregarpelis= require("")
+
 
 let peliculas = [];
 
 const getPeliculasService = async () =>{
-
+    
     return peliculas;
 }
 
