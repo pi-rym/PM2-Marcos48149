@@ -1,14 +1,10 @@
 //console.log(tempData);
+
 const axios= require('axios');
 const addUser= require('./renderCard')
 
 
-
-
-
-
-
-const get= ()=>{axios.get(" https://students-api.up.railway.app/movies")
+const get= ()=>{axios.get("http://localhost:3000/movies")
 .then(({data})=> data.forEach(addUser))
 .catch((error)=> console.log(error.message))
 } 
