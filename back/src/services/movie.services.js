@@ -12,7 +12,7 @@ const getMovies = async ()=> {
       
      const peliculasAdicionales = await getPeliculasService();
         
-     const peliculasExternas = [...movies, ...peliculasAdicionales]
+     const peliculasExternas = [...movies,...peliculasAdicionales]
 
         return peliculasExternas;
      

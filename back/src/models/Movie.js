@@ -5,7 +5,7 @@ movieSchema = new mongoose.Schema({
     year: Number,
     director:String,
     duration:Number,
-    genre:String,
+    genre:Array,
     rate:Number,
     poster:String,
 });
