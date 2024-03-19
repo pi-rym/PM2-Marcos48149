@@ -1,17 +1,19 @@
-const pushear= require('../controllers/POST.controllers')
+//const pushear= require('../controllers/POST.controllers')
 
-const axios = require('axios');
+//const axios = require('axios');
 const { getPeliculasService } = require('./POST.service');
+const Movie = require('../models/Movie');
 
 const getMovies = async ()=> {
     try {
 
-     const response = await axios.get("https://students-api.up.railway.app/movies")
-     const peliculasExternas =response.data;
+     const movies = await Movie.find();
+    
       
      const peliculasAdicionales = await getPeliculasService();
         
-     peliculasExternas.push(...peliculasAdicionales);
+     const peliculasExternas = [...movies, ...peliculasAdicionales]
+
         return peliculasExternas;
      
      //llamar a este modulo
