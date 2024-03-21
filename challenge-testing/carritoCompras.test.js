@@ -4,53 +4,78 @@
 const carritoCompras = require('./index');
 
 
-describe('Carrito de Compras', () => {
-    let carrito = new carritoCompras();
-
-    it("deberia verificar que carrito es una instancia de carritoCompras", ()=>{
-        expect(carrito instanceof carritoCompras).toBe(true)
+describe('clase CarritoCompras', () => {
+    let carrito;
+    beforeEach (() =>{
+        carrito = new carritoCompras();
     })
-    it("deberia consultar si calculcar es funcion", ()=>{
-        expect(typeof carrito.calcularTotal).toBe('function')
+
+    describe( 'sobre el constructor de la clase carritoCompras', ()=>{
+        it('carritoCompra deberia ser una clase', ()=>{
+            expect( typeof carrito.prototype.constructor).toBe('function')
+        })
+
+        it("deberia verificar que carrito es una instancia de carritoCompras", ()=>{
+            expect(carrito instanceof carritoCompras).toBe(true)
+        })
     })
-   /* it("deberia verificar que el arreglo no este vacio", ()=>{
-        expect(carrito.constructor.prototype).not.toBe([]);
-    })*/
 
-
-
-    it("deberia verificar que mi funcion calcularTotal esta retornando el valor correcto", ()=>{
-        const productos = [
-            { nombre: 'birome',
+   
+    describe('metodos de la clase carritoCompras', ()=>{
+        const producto1 ={
+            id:1,
+            nombre: 'papel',
             precio: 10,
             cantidad: 5 }
-        ]
+        
     
-        const productos2 = [
-            { nombre: 'birome',
+        const producto2 =  { 
+            id:2,
+            nombre: 'birome',
             precio: 100,
             cantidad: 5 }
-        ]
-       
-        expect( carrito.calcularTotal(productos2)).toBe(500);
-    })
 
-    it("deberia verificar el deescunto", ()=>{
-        const productos2 = [
-            { nombre: 'birome',
-            precio: 100,
-            cantidad: 5 }
-        ]
+            it('deberia tener un metodo llamado agrgarProducto ', ()=>{
+                expect(typeof carrito.agregarProducto).toBe('function')
+            })
+            
+            it('deberia tener un metodo llamado calcular total', ()=>{
+                expect(typeof carrito.calcularTotal).toBe('function')
+            })
 
-        const porcentaje=20;
-        const sumTotal= carrito.calcularTotal(productos2);
-        //const desc = sumTotal * 20/100;
+            it('deberia tener un metodo llamado aplicarDescuento', ()=>{
+                expect(typeof carrito.aplicarDescuento).toBe('function')
+            })
 
-        expect(carrito.aplicarDescuento(porcentaje)).toBe(sumTotal * 20/100);
-    })
- 
-  
+            it('el metodo agregar producto deberia agregar un producto', ()=>{
+                carrito.agregarProducto(producto1)
+                expect(carrito.productos).toContain(producto1)
+            })
+
+            it('el metodo calcularTotal deberia calcular el total de la sumar el precio de los productos', ()=>{
+                carrito.agregarProducto(producto1);
+                carrito.agregarProducto(producto2);
+
+                const totalExpec= producto1.precio * producto1.cantidad + producto2.precio * producto2.cantidad;
+
+                const total= carrito.calcularTotal()
+               
+                expect(total).toBe(totalExpec)
+            })
+
+            
+    });
 });
+
+
+
+            
+
+    
+   
+    
+  
+// aca cierra
 
 
 

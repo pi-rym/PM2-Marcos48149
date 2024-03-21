@@ -1,7 +1,7 @@
 
 class carritoCompras{
         constructor(){
-            this.carrito= [];
+            this.productos= [];
         }
 
         calcularTotal(items){
@@ -16,11 +16,16 @@ class carritoCompras{
             return  total;
            
         }
+
+        agregarProducto(product){
+            this.productos.push(product);
+        }
         
         aplicarDescuento(porcentaje){
-          let  sumaTotal=this.ca;
-           let descuento= sumaTotal * porcentaje /100;
-           return descuento; // 100
+            const subtotal = this.calcularTotal()
+            const descuento = this.calcularTotal * (porcentaje/100)
+    
+            return subtotal - descuento
         }
 }
 
