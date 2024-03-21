@@ -14,7 +14,7 @@ const postPeliculasService = async ({title, year, director, duration,genre,rate,
             year,
             director,
             duration,
-            genre,
+            genre:[],
             rate,
             poster
         }

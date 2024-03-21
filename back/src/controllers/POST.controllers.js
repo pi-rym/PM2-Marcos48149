@@ -16,7 +16,7 @@ const getPeliculasController= async (req, res)=> {
       try {
         await  postPeliculasService(req.body) 
     
-        res.status(201).json({message:"Producto creado exitosamente"})
+        res.status(201).json({message:"Pelicula creado exitosamente"})
   
       } catch (error) {
           res.status(400).json({error:error.message})
